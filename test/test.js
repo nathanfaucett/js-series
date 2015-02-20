@@ -4,7 +4,7 @@ var assert = require("assert"),
 
 describe("series(tasks, callback)", function() {
     describe("#(tasks : Array, callback)", function() {
-        it("should call array of tasks in order", function() {
+        it("should call array of tasks in order", function(done) {
             series([
                 function(next) {
                     process.nextTick(function() {
@@ -36,10 +36,11 @@ describe("series(tasks, callback)", function() {
                 }, {
                     id: 3
                 }]);
+                done();
             });
         });
 
-        it("should exit and call callback with error", function() {
+        it("should exit and call callback with error", function(done) {
             series([
                 function(next) {
                     process.nextTick(function() {
@@ -55,11 +56,12 @@ describe("series(tasks, callback)", function() {
                 }
             ], function(err) {
                 assert.equal(err.message, "not found");
+                done();
             });
         });
     });
     describe("#(tasks : Object, callback)", function() {
-        it("should call object tasks in order", function() {
+        it("should call object tasks in order", function(done) {
             series({
                 "first": function(next) {
                     process.nextTick(function() {
@@ -95,10 +97,11 @@ describe("series(tasks, callback)", function() {
                         id: 3
                     }
                 });
+                done();
             });
         });
 
-        it("should exit and call callback with error", function() {
+        it("should exit and call callback with error", function(done) {
             series({
                 "first": function(next) {
                     process.nextTick(function() {
@@ -114,6 +117,7 @@ describe("series(tasks, callback)", function() {
                 }
             }, function(err) {
                 assert.equal(err.message, "not found");
+                done();
             });
         });
     });
