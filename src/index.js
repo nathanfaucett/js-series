@@ -16,27 +16,27 @@ function arraySeries(tasks, callback) {
         var argsLength, task;
 
         if (called !== true) {
-            argsLength = arguments.length;
-
-            if (argsLength > 1) {
-                results[index] = argsLength > 2 ? fastSlice(arguments, 1) : arguments[1];
-            }
-
-            index += 1;
-
-            if (index === length) {
-                called = true;
-                callback(undefined, results);
-            } else if (err) {
+            if (err) {
                 called = true;
                 callback(err);
             } else {
-                task = tasks[index];
+                argsLength = arguments.length;
+                if (argsLength > 1) {
+                    results[index] = argsLength > 2 ? fastSlice(arguments, 1) : arguments[1];
+                }
 
-                if (isFunction(task)) {
-                    task(next);
+                index += 1;
+                if (index === length) {
+                    called = true;
+                    callback(undefined, results);
                 } else {
-                    throw new TypeError("series(tasks, callback) tasks must be functions");
+                    task = tasks[index];
+
+                    if (isFunction(task)) {
+                        task(next);
+                    } else {
+                        throw new TypeError("series(tasks, callback) tasks must be functions");
+                    }
                 }
             }
         }
@@ -63,27 +63,27 @@ function objectSeries(tasks, callback) {
         var argsLength, task;
 
         if (called !== true) {
-            argsLength = arguments.length;
-
-            if (argsLength > 1) {
-                results[objectKeys[index]] = argsLength > 2 ? fastSlice(arguments, 1) : arguments[1];
-            }
-
-            index += 1;
-
-            if (index === length) {
-                called = true;
-                callback(undefined, results);
-            } else if (err) {
+            if (err) {
                 called = true;
                 callback(err);
             } else {
-                task = tasks[objectKeys[index]];
+                argsLength = arguments.length;
+                if (argsLength > 1) {
+                    results[objectKeys[index]] = argsLength > 2 ? fastSlice(arguments, 1) : arguments[1];
+                }
 
-                if (isFunction(task)) {
-                    task(next);
+                index += 1;
+                if (index === length) {
+                    called = true;
+                    callback(undefined, results);
                 } else {
-                    throw new TypeError("series(tasks, callback) tasks must be functions");
+                    task = tasks[objectKeys[index]];
+
+                    if (isFunction(task)) {
+                        task(next);
+                    } else {
+                        throw new TypeError("series(tasks, callback) tasks must be functions");
+                    }
                 }
             }
         }
