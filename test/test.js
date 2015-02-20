@@ -59,6 +59,32 @@ describe("series(tasks, callback)", function() {
                 done();
             });
         });
+
+        it("should throw an error if a task is not a function", function(done) {
+            try {
+                series([
+                    "string",
+                    function(next) {
+                        next();
+                    }
+                ], function() {});
+            } catch (err) {
+                assert.equal(err.message, "series(tasks, callback) tasks must be functions");
+            }
+
+            try {
+                series([
+                    function(next) {
+                        next();
+                    },
+                    "string"
+                ], function() {});
+            } catch (err) {
+                assert.equal(err.message, "series(tasks, callback) tasks must be functions");
+            }
+
+            done();
+        });
     });
     describe("#(tasks : Object, callback)", function() {
         it("should call object tasks in order", function(done) {
@@ -119,6 +145,32 @@ describe("series(tasks, callback)", function() {
                 assert.equal(err.message, "not found");
                 done();
             });
+        });
+
+        it("should throw an error if a task is not a function", function(done) {
+            try {
+                series({
+                    "first": "string",
+                    "second": function(next) {
+                        next();
+                    }
+                }, function() {});
+            } catch (err) {
+                assert.equal(err.message, "series(tasks, callback) tasks must be functions");
+            }
+
+            try {
+                series({
+                    "first": function(next) {
+                        next();
+                    },
+                    "second": "string"
+                }, function() {});
+            } catch (err) {
+                assert.equal(err.message, "series(tasks, callback) tasks must be functions");
+            }
+
+            done();
         });
     });
 });
