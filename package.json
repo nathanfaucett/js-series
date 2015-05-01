@@ -21,10 +21,10 @@
     "mocha": "^2.1.0"
   },
   "dependencies": {
-    "keys": "nathanfaucett/keys",
-    "is_array": "nathanfaucett/is_array",
-    "is_function": "nathanfaucett/is_function",
-    "empty_function": "nathanfaucett/empty_function",
-    "fast_slice": "nathanfaucett/fast_slice"
+    "keys": "git://github.com/nathanfaucett/keys",
+    "is_array": "git://github.com/nathanfaucett/is_array",
+    "is_function": "git://github.com/nathanfaucett/is_function",
+    "empty_function": "git://github.com/nathanfaucett/empty_function",
+    "fast_slice": "git://github.com/nathanfaucett/fast_slice"
   }
 }

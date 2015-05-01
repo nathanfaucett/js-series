@@ -5,6 +5,17 @@ var keys = require("keys"),
     fastSlice = require("fast_slice");
 
 
+module.exports = series;
+
+
+function series(tasks, callback) {
+    return (
+        isArray(tasks) ?
+        arraySeries(tasks, callback || emptyFunction) :
+        objectSeries(Object(tasks), callback || emptyFunction)
+    );
+}
+
 function arraySeries(tasks, callback) {
     var index = 0,
         length = tasks.length,
@@ -97,11 +108,3 @@ function objectSeries(tasks, callback) {
         throw new TypeError("series(tasks, callback) tasks must be functions");
     }
 }
-
-module.exports = function series(tasks, callback) {
-    return (
-        isArray(tasks) ?
-        arraySeries(tasks, callback || emptyFunction) :
-        objectSeries(Object(tasks), callback || emptyFunction)
-    );
-};
