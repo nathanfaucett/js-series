@@ -1,5 +1,5 @@
 var keys = require("keys"),
-    isArray = require("is_array"),
+    isArrayLike = require("is_array_like"),
     isFunction = require("is_function"),
     emptyFunction = require("empty_function"),
     fastSlice = require("fast_slice");
@@ -10,7 +10,7 @@ module.exports = series;
 
 function series(tasks, callback) {
     return (
-        isArray(tasks) ?
+        isArrayLike(tasks) ?
         arraySeries(tasks, callback || emptyFunction) :
         objectSeries(Object(tasks), callback || emptyFunction)
     );

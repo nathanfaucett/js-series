@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "keys": "git://github.com/nathanfaucett/keys",
-    "is_array": "git://github.com/nathanfaucett/is_array",
+    "is_array_like": "git://github.com/nathanfaucett/is_array_like",
     "is_function": "git://github.com/nathanfaucett/is_function",
     "empty_function": "git://github.com/nathanfaucett/empty_function",
     "fast_slice": "git://github.com/nathanfaucett/fast_slice"
