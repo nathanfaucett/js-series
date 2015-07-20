@@ -23,13 +23,13 @@ function arraySeries(tasks, callback) {
         called = false,
         task;
 
-    function next(err) {
-        var argsLength, task;
+    function next(error) {
+        var argsLength, nextTask;
 
-        if (called !== true) {
-            if (err) {
+        if (called === false) {
+            if (error) {
                 called = true;
-                callback(err);
+                callback(error);
             } else {
                 argsLength = arguments.length;
                 if (argsLength > 1) {
@@ -41,10 +41,10 @@ function arraySeries(tasks, callback) {
                     called = true;
                     callback(undefined, results);
                 } else {
-                    task = tasks[index];
+                    nextTask = tasks[index];
 
-                    if (isFunction(task)) {
-                        task(next);
+                    if (isFunction(nextTask)) {
+                        nextTask(next);
                     } else {
                         throw new TypeError("series(tasks, callback) tasks must be functions");
                     }
@@ -70,13 +70,13 @@ function objectSeries(tasks, callback) {
         called = false,
         task;
 
-    function next(err) {
-        var argsLength, task;
+    function next(error) {
+        var argsLength, nextTask;
 
-        if (called !== true) {
-            if (err) {
+        if (called === false) {
+            if (error) {
                 called = true;
-                callback(err);
+                callback(error);
             } else {
                 argsLength = arguments.length;
                 if (argsLength > 1) {
@@ -88,10 +88,10 @@ function objectSeries(tasks, callback) {
                     called = true;
                     callback(undefined, results);
                 } else {
-                    task = tasks[objectKeys[index]];
+                    nextTask = tasks[objectKeys[index]];
 
-                    if (isFunction(task)) {
-                        task(next);
+                    if (isFunction(nextTask)) {
+                        nextTask(next);
                     } else {
                         throw new TypeError("series(tasks, callback) tasks must be functions");
                     }
