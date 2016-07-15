@@ -1,8 +1,8 @@
-var keys = require("keys"),
-    isArrayLike = require("is_array_like"),
-    isFunction = require("is_function"),
-    emptyFunction = require("empty_function"),
-    fastSlice = require("fast_slice");
+var keys = require("@nathanfaucett/keys"),
+    isArrayLike = require("@nathanfaucett/is_array_like"),
+    isFunction = require("@nathanfaucett/is_function"),
+    emptyFunction = require("@nathanfaucett/empty_function"),
+    fastSlice = require("@nathanfaucett/fast_slice");
 
 
 module.exports = series;

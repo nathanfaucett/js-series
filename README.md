@@ -9,7 +9,7 @@ series for the browser and node.js
 ```javascript
 
 var fs = require("fs"),
-    series = require("series");
+    series = require("@nathanfaucett/series");
 
 series(
     ["file1", "file2", "file3"].map(function(path) {
