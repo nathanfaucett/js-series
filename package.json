@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/series",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "series for the browser and node.js",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "zuul": "^3.6.0"
   },
   "dependencies": {
-    "@nathanfaucett/keys": "^0.0.1",
+    "@nathanfaucett/keys": "^0.0.2",
     "@nathanfaucett/is_array_like": "^0.0.2",
     "@nathanfaucett/is_function": "^0.0.1",
     "@nathanfaucett/empty_function": "^0.0.1",
